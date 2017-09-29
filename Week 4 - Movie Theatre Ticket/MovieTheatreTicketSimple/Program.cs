@@ -68,10 +68,10 @@ namespace MovieTheatreTicketSimple
                     return 5;
                 case 'B':
                     total += 2;
-                    return 5;
+                    return 2;
                 case 'C':
                     total += 3;
-                    return 5;
+                    return 3;
                 default:
                     return 0;
             }
