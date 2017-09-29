@@ -80,12 +80,14 @@ namespace MovieTheatreTicketSimple
         public static void printBill(double ticket, double snack)
         {
             Console.WriteLine("-------------------------");
-            Console.WriteLine("\n{0,5}{1,13}{2,5}{3,10}", "1", "ticket(s)", "@", String.Format("{0:C}", ticket));
-            Console.WriteLine("{0,5}{1,13}{2,5}{3,10}", "1", "snack(s)", "@", String.Format("{0:C}", snack));
+            //this is the string interpolation version
+            Console.WriteLine($"\n{"1",5}{"ticket(s)",13}{"@",5}{ticket,10:C2}");
+            //this is the parameterized version
+            Console.WriteLine("{0,5}{1,13}{2,5}{3,10:C2}", "1", "snack(s)", "@", snack);
             Console.WriteLine("{0,33}", "-----------------------------");
-            Console.WriteLine("{0,18}{1,5}{2,10}", "Subtotal" ,"=", String.Format("{0:C}", total));
-            Console.WriteLine("{0,18}{1,5}{2,10}", "GST", "=", String.Format("{0:C}", total * 0.05));
-            Console.WriteLine("{0,18}{1,5}{2,10}\n\n", "Total", "=", String.Format("{0:C}", total * 1.05));
+            Console.WriteLine("{0,18}{1,5}{2,10:C2}", "Subtotal" ,"=", total);
+            Console.WriteLine("{0,18}{1,5}{2,10:C2}", "GST", "=", total * 0.05);
+            Console.WriteLine("{0,18}{1,5}{2,10:C2}\n\n", "Total", "=", total * 1.05);
         }
     }
 }
