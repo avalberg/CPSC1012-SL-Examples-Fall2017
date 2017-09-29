@@ -8,63 +8,84 @@ namespace MovieTheatreTicketSimple
 {
     class Program
     {
+        // this is a field!
+        public static double total;
+
         static void Main(string[] args)
         {
-            // Declaring our variables
-            int age;
-            double total = 0;
-            char userSnack;
+            double ticketPrice, snackPrice;
 
-            // Writing the title
             Console.WriteLine("Movie Theatre\n-------------");
-            Console.Write("How old are you? ");
 
-            // Taking in user's age
-            age = int.Parse(Console.ReadLine());
+            ticketPrice = getTicketPrice();
 
-            // If/else to determine ticket price based on age
+            snackMenu();
+
+            snackPrice = getSnackPrice(char.Parse(Console.ReadLine().ToUpper()));
+
+            printBill(ticketPrice, snackPrice);
+        }
+
+        public static void snackMenu()
+        {
+            Console.WriteLine("-------------------");
+            Console.Write("\nPick a snack: \nA) Popcorn - 5$\nB) Skittles - 2$\n"
+                + "C) Cotton candy - 3$\nEnter your snack choice: ");
+        }
+
+        public static double getTicketPrice()
+        {
+            Console.Write("\nHow old are you? ");
+
+            int age = int.Parse(Console.ReadLine());
+
             if (age < 13)
             {
                 Console.WriteLine("\nYour ticket is 8$.");
                 total += 8;
+                return 8;
             }
             else if (age >= 13 && age < 18)
             {
                 Console.WriteLine("\nYour ticket is 10$.");
                 total += 10;
+                return 10;
             }
             else
             {
                 Console.WriteLine("\nYour ticket is 12$.");
                 total += 12;
+                return 12;
             }
+        }
 
-            // Writing snack options
-            Console.Write("\n\nPick a snack: \nA) Popcorn - 5$\nB) Skittles - 2$\n"
-                            + "C) Cotton candy - 3$\nEnter your snack choice: ");
-
-            // Taking in user's snack choice
-            userSnack = char.Parse(Console.ReadLine().ToUpper());
-
-            // Switch to figure out user's snack choice
-            switch (userSnack)
+        public static double getSnackPrice(char userChoice)
+        {
+            switch (userChoice)
             {
                 case 'A':
                     total += 5;
-                    break;
+                    return 5;
                 case 'B':
                     total += 2;
-                    break;
+                    return 5;
                 case 'C':
                     total += 3;
-                    break;
+                    return 5;
                 default:
-                    break;
+                    return 0;
             }
+        }
 
-            // Writing the bill total
-            Console.WriteLine("\n-------------------------"
-                + $"\nYour total bill is {total:C}\n\n");
+        public static void printBill(double ticket, double snack)
+        {
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("\n{0,5}{1,13}{2,5}{3,10}", "1", "ticket(s)", "@", String.Format("{0:C}", ticket));
+            Console.WriteLine("{0,5}{1,13}{2,5}{3,10}", "1", "snack(s)", "@", String.Format("{0:C}", snack));
+            Console.WriteLine("{0,33}", "-----------------------------");
+            Console.WriteLine("{0,18}{1,5}{2,10}", "Subtotal" ,"=", String.Format("{0:C}", total));
+            Console.WriteLine("{0,18}{1,5}{2,10}", "GST", "=", String.Format("{0:C}", total * 0.05));
+            Console.WriteLine("{0,18}{1,5}{2,10}\n\n", "Total", "=", String.Format("{0:C}", total * 1.05));
         }
     }
 }
