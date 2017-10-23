@@ -70,7 +70,7 @@ namespace MoreComplexMovieTheatre
             }
             // TODO: check if their data is valid (is it a number?)
             // TODO: update totalTickets, ticketSum, and childTix
-            // TODO: ask the user if they need to add more tickets
+            // TODO: ask the user if they need to add more tickets (hint: loop)
         }
 
         private static void PrintBill(int child, int youth, int adult, int senior)
