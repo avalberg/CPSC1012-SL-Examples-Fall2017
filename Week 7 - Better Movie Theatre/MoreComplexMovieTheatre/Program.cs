@@ -8,10 +8,12 @@ namespace MoreComplexMovieTheatre
 {
     class Program
     {
+        #region Fields
         // initialize class-wide variables (fields)
         public static decimal total = 0;
         public static int totalTickets = 0;
         public static decimal ticketSum = 0;
+        #endregion
 
         static void Main(string[] args)
         {
@@ -28,7 +30,7 @@ namespace MoreComplexMovieTheatre
             DisplayTicketPrices();
 
             // method to get all the user's tickets
-            //GetUserTicketChoices(ref child, ref youth, ref adult, ref senior);
+            GetUserTicketChoices(ref child, ref youth, ref adult, ref senior);
 
             // method to display ticket purchase summary
             //PrintBill(child,youth,adult,senior);
@@ -51,58 +53,61 @@ namespace MoreComplexMovieTheatre
         {
             // what type of ticket they want to buy
             string userInput = Console.ReadLine().ToUpper();
-
-            switch (userInput)
+            while (userInput != "A" && userInput )
             {
-                case "A":
-                    Console.WriteLine("How many child tickets would you like to buy?");
-                    int childTix;
-                    while (int.TryParse(Console.ReadLine(), out childTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {childTix} child ticket(s) to your order.");
-                    child += childTix;
-                    ticketSum += childTix * 8;
-                    totalTickets += childTix;
-                    total += childTix * 8;
-                    break;
-                case "B":
-                    Console.WriteLine("How many youth tickets would you like to buy?");
-                    int youthTix;
-                    while (int.TryParse(Console.ReadLine(), out youthTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {youthTix} child ticket(s) to your order.");
-                    youth += youthTix;
-                    ticketSum += youthTix * 8;
-                    totalTickets += youthTix;
-                    total += youthTix * 8;
-                    break;
-                case "C":
-                    Console.WriteLine("How many adult tickets would you like to buy?");
-                    int adultTix;
-                    while (int.TryParse(Console.ReadLine(), out adultTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {adultTix} child ticket(s) to your order.");
-                    adult += adultTix;
-                    ticketSum += adultTix * 8;
-                    totalTickets += adultTix;
-                    total += adultTix * 8;
-                    break;
-                case "D":
-                    Console.WriteLine("How many senior tickets would you like to buy?");
-                    int seniorTix;
-                    while (int.TryParse(Console.ReadLine(), out seniorTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {seniorTix} child ticket(s) to your order.");
-                    senior += seniorTix;
-                    ticketSum += seniorTix * 8;
-                    totalTickets += seniorTix;
-                    total += seniorTix * 8;
-                    break;
-                default:
-                    break;
+
             }
-            // TODO: check if their data is valid (is it a number?)
-            // TODO: update totalTickets, ticketSum, and childTix
+            while () {
+                switch (userInput)
+                {
+                    case "A":
+                        Console.WriteLine("How many child tickets would you like to buy?");
+                        int childTix;
+                        while (!int.TryParse(Console.ReadLine(), out childTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {childTix} child ticket(s) to your order.");
+                        child += childTix;
+                        ticketSum += childTix * 8;
+                        totalTickets += childTix;
+                        total += childTix * 8;
+                        break;
+                    case "B":
+                        Console.WriteLine("How many youth tickets would you like to buy?");
+                        int youthTix;
+                        while (!int.TryParse(Console.ReadLine(), out youthTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {youthTix} child ticket(s) to your order.");
+                        youth += youthTix;
+                        ticketSum += youthTix * 8;
+                        totalTickets += youthTix;
+                        total += youthTix * 8;
+                        break;
+                    case "C":
+                        Console.WriteLine("How many adult tickets would you like to buy?");
+                        int adultTix;
+                        while (!int.TryParse(Console.ReadLine(), out adultTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {adultTix} child ticket(s) to your order.");
+                        adult += adultTix;
+                        ticketSum += adultTix * 8;
+                        totalTickets += adultTix;
+                        total += adultTix * 8;
+                        break;
+                    case "D":
+                        Console.WriteLine("How many senior tickets would you like to buy?");
+                        int seniorTix;
+                        while (!int.TryParse(Console.ReadLine(), out seniorTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {seniorTix} child ticket(s) to your order.");
+                        senior += seniorTix;
+                        ticketSum += seniorTix * 8;
+                        totalTickets += seniorTix;
+                        total += seniorTix * 8;
+                        break;
+                    default:
+                        break;
+                }
+            }
             // TODO: ask the user if they need to add more tickets (hint: loop)
         }
 
