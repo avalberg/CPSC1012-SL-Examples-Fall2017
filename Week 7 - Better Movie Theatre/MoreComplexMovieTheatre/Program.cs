@@ -26,14 +26,11 @@ namespace MoreComplexMovieTheatre
             Console.WriteLine("The Best Theatre Ever");
             Console.Write("------------------");
 
-            // method to show current ticket prices
-            DisplayTicketPrices();
-
             // method to get all the user's tickets
             GetUserTicketChoices(ref child, ref youth, ref adult, ref senior);
 
             // method to display ticket purchase summary
-            //PrintBill(child,youth,adult,senior);
+            PrintBill(child,youth,adult,senior);
 
             // TODO: add menu for whole program
             // TODO: add snack choices (1 for each guest)
@@ -52,59 +49,64 @@ namespace MoreComplexMovieTheatre
         private static void GetUserTicketChoices(ref int child, ref int youth, ref int adult, ref int senior)
         {
             // what type of ticket they want to buy
-            string userInput = Console.ReadLine().ToUpper();
-
-            switch (userInput)
+            string exitYN = "";
+            do
             {
-                case "A":
-                    Console.WriteLine("How many child tickets would you like to buy?");
-                    int childTix;
-                    while (!int.TryParse(Console.ReadLine(), out childTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {childTix} child ticket(s) to your order.");
-                    child += childTix;
-                    ticketSum += childTix * 8;
-                    totalTickets += childTix;
-                    total += childTix * 8;
-                    break;
-                case "B":
-                    Console.WriteLine("How many youth tickets would you like to buy?");
-                    int youthTix;
-                    while (!int.TryParse(Console.ReadLine(), out youthTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {youthTix} child ticket(s) to your order.");
-                    youth += youthTix;
-                    ticketSum += youthTix * 10;
-                    totalTickets += youthTix;
-                    total += youthTix * 10;
-                    break;
-                case "C":
-                    Console.WriteLine("How many adult tickets would you like to buy?");
-                    int adultTix;
-                    while (!int.TryParse(Console.ReadLine(), out adultTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {adultTix} child ticket(s) to your order.");
-                    adult += adultTix;
-                    ticketSum += adultTix * 12;
-                    totalTickets += adultTix;
-                    total += adultTix * 12;
-                    break;
-                case "D":
-                    Console.WriteLine("How many senior tickets would you like to buy?");
-                    int seniorTix;
-                    while (!int.TryParse(Console.ReadLine(), out seniorTix))
-                        Console.Write($"\nThat's not a valid selection.");
-                    Console.Write($"\nYou have added {seniorTix} child ticket(s) to your order.");
-                    senior += seniorTix;
-                    ticketSum += seniorTix * 8;
-                    totalTickets += seniorTix;
-                    total += seniorTix * 8;
-                    break;
-                default:
-                    break;
-            }
+                DisplayTicketPrices();
+                string userInput = Console.ReadLine().ToUpper();
 
-            // TODO: ask the user if they need to add more tickets (hint: loop)
+                switch (userInput)
+                {
+                    case "A":
+                        Console.WriteLine("How many child tickets would you like to buy?");
+                        int childTix;
+                        while (!int.TryParse(Console.ReadLine(), out childTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {childTix} child ticket(s) to your order.");
+                        child += childTix;
+                        ticketSum += childTix * 8;
+                        totalTickets += childTix;
+                        total += childTix * 8;
+                        break;
+                    case "B":
+                        Console.WriteLine("How many youth tickets would you like to buy?");
+                        int youthTix;
+                        while (!int.TryParse(Console.ReadLine(), out youthTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {youthTix} child ticket(s) to your order.");
+                        youth += youthTix;
+                        ticketSum += youthTix * 10;
+                        totalTickets += youthTix;
+                        total += youthTix * 10;
+                        break;
+                    case "C":
+                        Console.WriteLine("How many adult tickets would you like to buy?");
+                        int adultTix;
+                        while (!int.TryParse(Console.ReadLine(), out adultTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {adultTix} child ticket(s) to your order.");
+                        adult += adultTix;
+                        ticketSum += adultTix * 12;
+                        totalTickets += adultTix;
+                        total += adultTix * 12;
+                        break;
+                    case "D":
+                        Console.WriteLine("How many senior tickets would you like to buy?");
+                        int seniorTix;
+                        while (!int.TryParse(Console.ReadLine(), out seniorTix))
+                            Console.Write($"\nThat's not a valid selection.");
+                        Console.Write($"\nYou have added {seniorTix} child ticket(s) to your order.");
+                        senior += seniorTix;
+                        ticketSum += seniorTix * 8;
+                        totalTickets += seniorTix;
+                        total += seniorTix * 8;
+                        break;
+                    default:
+                        break;
+                }
+                Console.Write("\n\nHave you added all your tickets?");
+                exitYN = Console.ReadLine().ToUpper();
+            } while (exitYN != "Y");
         }
 
         private static void PrintBill(int child, int youth, int adult, int senior)
