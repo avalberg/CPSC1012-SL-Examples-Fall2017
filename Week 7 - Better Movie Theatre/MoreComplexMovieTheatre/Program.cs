@@ -48,13 +48,13 @@ namespace MoreComplexMovieTheatre
 
         private static void GetUserTicketChoices(ref int child, ref int youth, ref int adult, ref int senior)
         {
-            // what type of ticket they want to buy
             string exitYN = "";
+            Console.Write("\n Ticket Purchase");
             do
             {
                 DisplayTicketPrices();
                 string userInput = Console.ReadLine().ToUpper();
-
+                // TODO: need to validate user input
                 switch (userInput)
                 {
                     case "A":
