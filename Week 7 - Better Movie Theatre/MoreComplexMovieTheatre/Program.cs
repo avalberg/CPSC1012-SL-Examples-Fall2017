@@ -106,6 +106,7 @@ namespace MoreComplexMovieTheatre
                 }
                 Console.Write("\n\nHave you added all your tickets?");
                 exitYN = Console.ReadLine().ToUpper();
+                // TODO: validate user input
             } while (exitYN != "Y");
         }
 
