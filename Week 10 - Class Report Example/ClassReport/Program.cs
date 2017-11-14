@@ -11,8 +11,8 @@ namespace ClassReport
         static void Main(string[] args)
         {
             int userInput;
-            int numStudents = 2;
-            string className = "classname";
+            int numStudents = 0;
+            string className = "";
             double[] grades = new double[25];
 
             do
