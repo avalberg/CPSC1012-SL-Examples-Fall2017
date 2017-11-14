@@ -113,7 +113,7 @@ namespace ClassReport
                         break;
                 }
             } while (userInput != 6);
-            //TODO: move switch components into methods
+            //TODO: move switch components into methods (1-5, not 6)
             //TODO: move switch (menu) into a method
         }
     }
