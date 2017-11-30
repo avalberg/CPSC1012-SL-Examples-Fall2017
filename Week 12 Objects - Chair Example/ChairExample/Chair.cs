@@ -101,6 +101,12 @@ namespace ChairExample
             // if the chair type is stationary, display legs, backsupport, and arms
             // if the chair type is stool, display legs and backsupport
         }
+
+        public void DisplayChairAttributes(chairType type)
+        {
+            // you can have methods with the same name - just need different parameters!
+            // this is called overloading
+        }
         #endregion
     }
 }
