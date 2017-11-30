@@ -10,6 +10,7 @@ namespace ChairExample
     {
         static void Main(string[] args)
         {
+            // declaring variables
             Chair.chairType type;
             Chair.primaryMaterial material;
             string colour, name;
