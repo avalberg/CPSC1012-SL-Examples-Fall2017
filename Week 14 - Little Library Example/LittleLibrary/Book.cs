@@ -22,6 +22,11 @@ namespace LittleLibrary
         public decimal FinePerDay { get { return _finePerDay; } set { _finePerDay = value; } }
         public int TimesCheckedOut { get { return _timesCheckedOut; } set { _timesCheckedOut = value; } }
 
+        public Book()
+        {
+
+        }
+
         public Book(int bookid,string title,string genre,bool checkedout,DateTime datecheckedout,decimal fineperday,int timescheckedout)
         {
             _bookID = bookid;

@@ -1,0 +1,5 @@
+1,The Lion The Witch and the Wardrobe,Children,false,null,0.50,12
+2,The Little Prince,Children,false,null,0.50,5
+3,Black Beauty,Children,false,null,0.50,4
+4,Anne of Green Gables,Children,false,null,0.50,11
+5,Charlotte's Web,Children,false,null,0.50,15

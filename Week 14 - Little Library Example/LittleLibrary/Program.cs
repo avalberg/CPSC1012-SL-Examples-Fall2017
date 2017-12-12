@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,11 @@ namespace LittleLibrary
                     case 1:
                         //TODO: set up this case so that it lets the user pick a genre (from a list) and then shows them the books from that genre in order of how many times they've been taken out
                         //set it up in a method for repeatability
+                        foreach (Book book in books)
+                            Console.Write(book.BookID);
                         break;
                     case 2:
+                        //TODO: set up this case to find a specific book
                         break;
                     case 3:
                         LibraryServices();
@@ -55,20 +59,30 @@ namespace LittleLibrary
             bool retrieved = false;
 
             // taking user input for the source of the books (the file path)
-            Console.Write("Enter the file path for the library's book list: ");
+            Console.Write("Enter the file path for the library's books: ");
             string source = Console.ReadLine();
 
             // now, we'll try to find the path specific by the user; since it might be wrong, we want to wrap this in a try/catch!
             try
             {
-                string[] bookLines = System.IO.File.ReadAllLines(source);
-                foreach (string line in bookLines)
+                string[] bookGenres = Directory.GetFiles(source, "*.txt");
+                foreach (string file in bookGenres)
                 {
-                    string[] bookParts = line.Split(',');
-                    Book temp;
-                    //TODO: set all properties of the Book to their appropriate part of the string
-                    //temp.BookID = bookParts[0]; (needs to be done for all of them! 7 in total)
-                    //TODO: add each Book temp to the List books
+                    string filecontent = File.ReadAllText(file);
+                    string[] booklist = filecontent.Split('\n');
+                    foreach(string book in booklist)
+                    {
+                        string[] bookParts = book.Split(',');
+                        Book temp = new Book();
+                        temp.BookID = int.Parse(bookParts[0]);
+                        temp.Title = bookParts[1];
+                        temp.Genre = bookParts[2];
+                        temp.CheckedOut = bool.Parse(bookParts[3]);
+                        temp.DateCheckedOut = DateTime.Parse(bookParts[4]);
+                        temp.FinePerDay = decimal.Parse(bookParts[5]);
+                        temp.TimesCheckedOut = int.Parse(bookParts[6]);
+                        books.Add(temp);
+                    }
                 }
                 retrieved = true;
             }
